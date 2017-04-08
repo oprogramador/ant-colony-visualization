@@ -35,6 +35,14 @@ function ants() {
     });
   }
 
+  function eat() {
+    state.ants.forEach((ant, i) => {
+      let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
+      cell.food = Math.max(0, cell.food - 0.1);
+    });
+  }
+
   create();
   moveAll();
+  eat();
 }
