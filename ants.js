@@ -49,8 +49,18 @@ function ants() {
     });
   }
 
+  function decreasePheromones() {
+    for (let y = 0; y < state.height; y++) {
+      for (let x = 0; x < state.width; x++) {
+        let cell = state.cells[JSON.stringify({ x, y })];
+        cell.pheromones = Math.max(0, cell.pheromones - 0.01);
+      }
+    }
+  }
+
   create();
   moveAll();
   eat();
   putPheromones();
+  decreasePheromones();
 }
