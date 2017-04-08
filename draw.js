@@ -40,6 +40,7 @@ function draw() {
       let antImg = document.createElement('img');
       antImg.src = 'img/ant.png';
       antImg.className = 'ant';
+      antImg.style.opacity = ant.health;
       tableCell.appendChild(antImg);
     });
   }

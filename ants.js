@@ -1,6 +1,10 @@
 function ants() {
   function create() {
-    state.ants.push({ x: 0, y: 0 });
+    state.ants.push({
+      x: 0,
+      y: 0,
+      health: 1,
+    });
   }
 
   function isInside(ant) {
@@ -38,7 +42,10 @@ function ants() {
   function eat() {
     state.ants.forEach((ant, i) => {
       let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
+      let oldFood = cell.food;
       cell.food = Math.max(0, cell.food - 0.1);
+      let newFood = cell.food;
+      ant.health += (oldFood - newFood);
     });
   }
 
@@ -58,9 +65,16 @@ function ants() {
     }
   }
 
+  function damageAll() {
+    state.ants.forEach((ant, i) => {
+      ant.health -= 0.05;
+    });
+  }
+
   create();
   moveAll();
   eat();
   putPheromones();
   decreasePheromones();
+  damageAll();
 }
