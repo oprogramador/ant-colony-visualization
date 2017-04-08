@@ -1,6 +1,13 @@
 .cell {
   width: 20px;
   height: 20px;
+  border: 3px yellow ridge;
+}
+
+.empty {
   background-color: black;
-  border: 30px yellow ridge;
+}
+
+.full {
+  background-color: red;
 }
