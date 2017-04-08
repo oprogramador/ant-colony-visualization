@@ -1,25 +1,16 @@
 function initialize() {
-  var board = document.getElementById('board');
-  var height = 20;
-  var width = 20;
+  let board = document.getElementById('board');
 
-  for (let y = 0; y < height; y++) {
-    var row = document.createElement('tr');
-    for (let x = 0; x < width; x++) {
-      var cell = document.createElement('td');
-      cell.className = 'cell empty';
-      state.cells[JSON.stringify({ x, y })] = {
+  for (let y = 0; y < state.height; y++) {
+    for (let x = 0; x < state.width; x++) {
+      let cell = {
         food: Math.random(),
         obstacle: false,
+        modifyObstacle: function() {
+          this.obstacle = !this.obstacle;
+        },
       }
-      cell.onclick = function() {
-        var oldObstacle = state.cells[JSON.stringify({ x, y })].obstacle;
-        var newObstacle = !oldObstacle;
-        state.cells[JSON.stringify({ x, y })].obstacle = newObstacle;
-        this.className = newObstacle ? 'cell full' : 'cell empty';
-      }
-      row.appendChild(cell);
+      state.cells[JSON.stringify({ x, y })] = cell;
     }
-    board.appendChild(row);
   }
 }
