@@ -1,6 +1,6 @@
 const state = {
   cells: {},
-  ants: {},
+  ants: [],
   width: 20,
   height: 20,
 };

@@ -3,6 +3,7 @@
     <script src="state.js"></script>
     <script src="initialize.js"></script>
     <script src="draw.js"></script>
+    <script src="ants.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
@@ -12,6 +13,10 @@
     <script>
       initialize();
       draw();
+      setInterval(() => {
+        ants();
+        draw();
+      }, 500);
     </script>
   </body>
 </html>
