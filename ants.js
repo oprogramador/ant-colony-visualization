@@ -19,8 +19,12 @@ function ants() {
     return isInside(ant) && isFree(ant);
   }
 
+  function getLivingAnts() {
+    return state.ants.filter(ant => ant.health > 0);
+  }
+
   function moveAll() {
-    state.ants.forEach((ant, i) => {
+    getLivingAnts().forEach((ant, i) => {
       let newAnt = Object.assign({}, ant);
       let direction = Math.random();
       if (direction < 0.2) {
@@ -40,17 +44,17 @@ function ants() {
   }
 
   function eat() {
-    state.ants.forEach((ant, i) => {
+    getLivingAnts().forEach((ant, i) => {
       let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
       let oldFood = cell.food;
       cell.food = Math.max(0, cell.food - 0.1);
       let newFood = cell.food;
-      ant.health += (oldFood - newFood);
+      ant.health += (oldFood - newFood) * 3;
     });
   }
 
   function putPheromones() {
-    state.ants.forEach((ant, i) => {
+    getLivingAnts().forEach((ant, i) => {
       let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
       cell.pheromones += 0.1;
     });
@@ -60,7 +64,7 @@ function ants() {
     for (let y = 0; y < state.height; y++) {
       for (let x = 0; x < state.width; x++) {
         let cell = state.cells[JSON.stringify({ x, y })];
-        cell.pheromones = Math.max(0, cell.pheromones - 0.01);
+        cell.pheromones = Math.max(0, cell.pheromones - 0.05);
       }
     }
   }
