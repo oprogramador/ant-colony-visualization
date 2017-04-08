@@ -9,6 +9,7 @@ function initialize() {
         modifyObstacle: function() {
           this.obstacle = !this.obstacle;
         },
+        pheromones: 0,
       }
       state.cells[JSON.stringify({ x, y })] = cell;
     }

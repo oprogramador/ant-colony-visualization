@@ -19,6 +19,11 @@ function draw() {
         foodImg.src = 'img/hamburger.png';
         foodImg.style.width = cell.food * 20;
         tableCell.appendChild(foodImg);
+
+        let pheromonesImg = document.createElement('img');
+        pheromonesImg.src = 'img/perfume.png';
+        pheromonesImg.style.width = Math.min(40, cell.pheromones * 5);
+        tableCell.appendChild(pheromonesImg);
       }
       tableCell.onclick = function() {
         cell.modifyObstacle();

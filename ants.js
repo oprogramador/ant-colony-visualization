@@ -42,7 +42,15 @@ function ants() {
     });
   }
 
+  function putPheromones() {
+    state.ants.forEach((ant, i) => {
+      let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
+      cell.pheromones += 0.1;
+    });
+  }
+
   create();
   moveAll();
   eat();
+  putPheromones();
 }
