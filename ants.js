@@ -23,18 +23,33 @@ function ants() {
     return state.ants.filter(ant => ant.health > 0);
   }
 
+  function readPheromones(x, y) {
+    let cell = state.cells[JSON.stringify({ x, y })];
+
+    return cell ? cell.pheromones : 0;
+  }
+
   function moveAll() {
     getLivingAnts().forEach((ant, i) => {
       let newAnt = Object.assign({}, ant);
-      let direction = Math.random();
-      if (direction < 0.2) {
-        newAnt.x++;
-      } else if (direction < 0.4) {
-        newAnt.x--;
-      } else if (direction < 0.6) {
-        newAnt.y++;
-      } else if (direction < 0.8) {
-        newAnt.y--;
+      let isHorizontalDirection = Math.random() < 0.5;
+      let delta = 0.1;
+      if (isHorizontalDirection) {
+        let plusProbability = (readPheromones(ant.x + 1, ant.y) + 1) * Math.random();
+        let minusProbability = (readPheromones(ant.x - 1, ant.y) + 1) * Math.random();
+        if (plusProbability > minusProbability + delta) {
+          newAnt.x++;
+        } else if (minusProbability > plusProbability + delta) {
+          newAnt.x--;
+        }
+      } else {
+        let plusProbability = (readPheromones(ant.x, ant.y + 1) + 1) * Math.random();
+        let minusProbability = (readPheromones(ant.x, ant.y - 1) + 1) * Math.random();
+        if (plusProbability > minusProbability + delta) {
+          newAnt.y++;
+        } else if (minusProbability > plusProbability + delta) {
+          newAnt.y--;
+        }
       }
 
       if (isAvailable(newAnt)) {
