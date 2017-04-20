@@ -66,16 +66,16 @@ function ants() {
     getLivingAnts().forEach((ant, i) => {
       let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
       let oldFood = cell.food;
-      cell.food = Math.max(0, cell.food - 0.1);
+      cell.food = Math.max(0, cell.food - state.parameters.foodEating);
       let newFood = cell.food;
-      ant.health += (oldFood - newFood) * 3;
+      ant.health += (oldFood - newFood) * state.parameters.healthFromFood;
     });
   }
 
   function putPheromones() {
     getLivingAnts().forEach((ant, i) => {
       let cell = state.cells[JSON.stringify({ x: ant.x, y: ant.y })];
-      cell.pheromones += 0.1;
+      cell.pheromones += state.parameters.pheromonesAtOnce;
     });
   }
 
@@ -83,14 +83,14 @@ function ants() {
     for (let y = 0; y < state.height; y++) {
       for (let x = 0; x < state.width; x++) {
         let cell = state.cells[JSON.stringify({ x, y })];
-        cell.pheromones = Math.max(0, cell.pheromones - 0.05);
+        cell.pheromones = Math.max(0, cell.pheromones - state.parameters.pheromonesEvaporation);
       }
     }
   }
 
   function damageAll() {
     state.ants.forEach((ant, i) => {
-      ant.health -= 0.05;
+      ant.health -= state.parameters.damage;
     });
   }
 
