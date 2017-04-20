@@ -1,10 +1,14 @@
 function ants() {
   function create() {
-    state.ants.push({
-      x: 0,
-      y: 0,
-      health: 1,
-    });
+    let x = state.parameters.initial.x;
+    let y = state.parameters.initial.y;
+    if (typeof x === 'number' && typeof y === 'number' && x >= 0 && y >= 0 && x < state.width && y < state.height) {
+      state.ants.push({
+        x,
+        y,
+        health: 1,
+      });
+    }
   }
 
   function isInside(ant) {

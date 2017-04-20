@@ -4,19 +4,29 @@
     <script src="initialize.js"></script>
     <script src="draw.js"></script>
     <script src="ants.js"></script>
+    <script src="addListeners.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
     <h1>Ant colony visualization</h1>
-    <table id="board">
-    </table>
-    <script>
-      initialize();
-      draw();
-      setInterval(() => {
-        ants();
+    <div>
+      <div style="float:left">
+        <table id="board">
+        </table>
+      </div>
+      <div style="float:left">
+        <label for="initial_x">initial x: </label> <input id="initial_x"/> <br/>
+        <label for="initial_y">initial y: </label> <input id="initial_y"/> <br/>
+      </div>
+      <script>
+        initialize();
         draw();
-      }, 500);
-    </script>
+        addListeners();
+        setInterval(() => {
+          ants();
+          draw();
+        }, 500);
+      </script>
+    </div>
   </body>
 </html>
