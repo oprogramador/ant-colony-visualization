@@ -1,4 +1,4 @@
-function ants() {
+function ants(state) {
   function create() {
     let x = state.parameters.initial.x;
     let y = state.parameters.initial.y;

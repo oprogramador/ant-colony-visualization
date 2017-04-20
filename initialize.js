@@ -1,4 +1,4 @@
-function initialize() {
+function initialize(state) {
   let board = document.getElementById('board');
 
   for (let y = 0; y < state.height; y++) {

@@ -1,4 +1,4 @@
-function addListeners() {
+function addListeners(state) {
   function bindInputWithField(input, object, field) {
     input.value = object[field];
     input.addEventListener('change', function(event) {

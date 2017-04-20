@@ -1,6 +1,4 @@
-function draw() {
-
-
+function draw(state) {
   let board = document.getElementById('board');
   board.innerHTML = '';
   tableCellDivs = {};

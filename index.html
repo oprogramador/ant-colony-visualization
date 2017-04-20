@@ -1,6 +1,6 @@
 <html>
   <head>
-    <script src="state.js"></script>
+    <script src="createBasicState.js"></script>
     <script src="initialize.js"></script>
     <script src="draw.js"></script>
     <script src="ants.js"></script>
@@ -23,15 +23,7 @@
         <label for="pheromonesEvaporation">pheromones evaporation: </label> <input id="pheromonesEvaporation"/> <br/>
         <label for="damage">damage: </label> <input id="damage"/> <br/>
       </div>
-      <script>
-        initialize();
-        draw();
-        addListeners();
-        setInterval(() => {
-          ants();
-          draw();
-        }, 500);
-      </script>
+      <script src="main.js"></script>
     </div>
   </body>
 </html>
