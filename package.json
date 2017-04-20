@@ -1,0 +1,22 @@
+{
+  "name": "ant-colony-visualization",
+  "version": "1.0.0",
+  "description": "ant colony visualization",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oprogramador/ant-colony-visualization.git"
+  },
+  "author": "oprogramador",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oprogramador/ant-colony-visualization/issues"
+  },
+  "homepage": "https://github.com/oprogramador/ant-colony-visualization#readme",
+  "dependencies": {
+    "ant-colony-optimization": "^1.1.1"
+  }
+}
